@@ -2,20 +2,20 @@ import { model, Schema } from "mongoose";
 import { TUser } from "./user.interface";
 
 const userSchema = new Schema<TUser>({
-    id:{
+    id: {
         type: String,
         required: true,
-        unique:true
+        unique: true
     },
     password: {
         type: String,
         required: true
     },
-    needPasswordChange:{
+    needPasswordChange: {
         type: Boolean,
         default: false
     },
-    role:{
+    role: {
         type: String,
         enum: ["student", "faculty", "admin"]
     },
@@ -24,11 +24,15 @@ const userSchema = new Schema<TUser>({
         enum: ["in_progress", "blocked"],
         default: "in-progress"
     },
-    isDeleted:{
+    isDeleted: {
         type: Boolean,
         default: false
     }
-})
+},
+    {
+        timestamps: true
+    }
+)
 
 const UserModel = model<TUser>("user", userSchema)
 
