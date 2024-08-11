@@ -5,6 +5,5 @@ export const userInputValidation = z.object({
     password: z
         .string({ required_error: "password is requerd", message: "password must be string" })
         .min(8, { message: "password minimum 8" })
-        .max(16, { message: "password max 16" }),
-    role: z.enum(["student", "faculty", "admin"])
+        .max(16, { message: "password max 16" })
 })

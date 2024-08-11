@@ -22,7 +22,7 @@ const userSchema = new Schema<TUser>(
     },
     stutas: {
       type: String,
-      enum: ['in_progress', 'blocked'],
+      enum: ['in-progress', 'blocked'],
       default: 'in-progress',
     },
     isDeleted: {
