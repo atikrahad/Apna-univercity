@@ -1,4 +1,5 @@
-import { TName, TUser } from '../user/user.interface';
+import { ObjectId } from 'mongoose';
+import { TName } from '../user/user.interface';
 
 export type TGuardian = {
   father: {
@@ -14,10 +15,11 @@ export type TGuardian = {
 };
 
 export type TStudent = {
-  user: TUser;
+  user: ObjectId;
+  id: string;
   name: TName;
   gender: 'male' | 'famale' | 'others';
-  dateOfBirth: Date;
+  dateOfBirth: string;
   email: string;
   constactNo: string;
   emergencyContactNo: string;

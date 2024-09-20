@@ -27,7 +27,6 @@ const guardianSchema = new Schema<TGuardian>({
       type: String,
       required: true,
     },
-    required: true,
   },
   mother: {
     name: nameSchema,
@@ -39,7 +38,6 @@ const guardianSchema = new Schema<TGuardian>({
       type: String,
       required: true,
     },
-    required: true,
   },
 });
 
@@ -47,6 +45,13 @@ const studentSchema = new Schema<TStudent>({
   user: {
     type: Schema.Types.ObjectId,
     required: true,
+    unique: true,
+    ref: "user"
+  },
+  id: {
+    type: String,
+    required: true,
+    unique: true
   },
   name: {
     type: nameSchema,
@@ -57,7 +62,7 @@ const studentSchema = new Schema<TStudent>({
     enum: ['male', 'famale', 'others'],
   },
   dateOfBirth: {
-    type: Date,
+    type: String,
     required: true,
   },
   email: {

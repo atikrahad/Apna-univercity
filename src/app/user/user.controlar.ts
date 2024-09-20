@@ -1,21 +1,25 @@
 import { RequestHandler } from "express";
 import { userServieces } from "./user.services";
+import { StudentValidation } from "../student/student.validation";
+import sendResponce from "../utils/sendResponce";
+import httpStatus from "http-status";
 
-const createStudent: RequestHandler = async (req, res) => {
+const createStudent: RequestHandler = async (req, res, next) => {
     try {
-        const { password, id } = req.body
-        const result = await userServieces.StudentCreateService(password, id)
-        res.status(200).json({
-            success: true,
-            message: "Successfully create user",
+        const { password, student } = req.body
+        const studentInputValidate = StudentValidation.parse(student)
+        const result = await userServieces.StudentCreateService(password, studentInputValidate)
+
+        sendResponce(res, {
+            stutasCode: httpStatus.OK,
+            seccess: true,
+            message: "successfully create a student",
             data: result
         })
-    } catch (err) {
-        res.status(500).json({
-            success: false,
-            message: err,
 
-        })
+    } catch (err) {
+        next(err)
+
     }
 }
 

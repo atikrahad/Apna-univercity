@@ -8,6 +8,6 @@ export type TUser = {
 };
 export type TName = {
   firstName: string;
-  middleName: string;
+  middleName?: string;
   lastName: string;
 };
