@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import express, { Request, Response } from 'express';
 import cors from "cors"
 import globalErrorHandle from './app/middlewere/globalErrorHandler';
@@ -10,7 +9,7 @@ app.use(cors())
 app.use(express.json())
 
 // ======= Api end point============
-app.use("/api", router)
+app.use("/api/v1", router)
 
 app.get("/", (req: Request, res: Response) => {
     res.send("server is running")
@@ -18,6 +17,5 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use(notFound)
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
 app.use(globalErrorHandle)
 export default app;

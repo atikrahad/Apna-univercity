@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { RequestHandler } from "express";
 import { userServieces } from "./user.services";
 import { StudentValidation } from "../student/student.validation";
@@ -7,7 +8,7 @@ import httpStatus from "http-status";
 const createStudent: RequestHandler = async (req, res, next) => {
     try {
         const { password, student } = req.body
-        const studentInputValidate = StudentValidation.parse(student)
+        const studentInputValidate: any = StudentValidation.parse(student)
         const result = await userServieces.StudentCreateService(password, studentInputValidate)
 
         sendResponce(res, {
