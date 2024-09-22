@@ -5,7 +5,7 @@ import { userServieces } from "./user.services";
 import { StudentValidation } from "../student/student.validation";
 import sendResponce from "../utils/sendResponce";
 import httpStatus from "http-status";
-import catchAsync from "../middlewere/catchAsync";
+import catchAsync from "../utils/catchAsync";
 
 const createStudent = catchAsync(async (req, res, next) => {
 

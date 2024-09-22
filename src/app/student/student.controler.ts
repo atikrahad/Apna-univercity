@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import sendResponce from "../utils/sendResponce";
 import { studentServices } from "./student.services";
-import catchAsync from "../middlewere/catchAsync";
+import catchAsync from "../utils/catchAsync";
 import { StudentUpdateValidation } from "./student.validation";
 
 const getAllstudent = catchAsync(async (req, res,) => {
@@ -20,8 +20,8 @@ const getAllstudent = catchAsync(async (req, res,) => {
 
 const updateStudent = catchAsync(async (req, res,) => {
     const id = req.params.id
-    const validationData = StudentUpdateValidation.parse(req.body)
-    const result = await studentServices.updateStudent(id, validationData)
+
+    const result = await studentServices.updateStudent(id, req.body)
 
     sendResponce(res, {
         stutasCode: 200,
