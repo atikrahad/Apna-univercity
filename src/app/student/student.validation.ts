@@ -33,3 +33,19 @@ export const StudentValidation = z.object({
     localGuardian: parentValidationSchema,
     academicDepertMent: z.string().optional()
 });
+
+
+export const StudentUpdateValidation = z.object({
+    name: nameValidationSchema.optional(),
+    gender: z.enum(["male", "famale", "others"], { required_error: "gender is requerd" }).optional(),
+    email: z.string(({ required_error: "Email is requerd" })).email(({ message: "invalid email format" })).optional(),
+    dateOfBirth: z.string({ message: "Date of Bitrh is required" }).optional(),
+    constactNo: z.string(({ required_error: "contact number is requerd" })).max(15).optional(),
+    emergencyContactNo: z.string(({ required_error: "contact number is requerd" })).max(15).optional(),
+    group: z.enum(["sceince", "arts", "commerce"], { required_error: "group is requerd" }).optional(),
+    presentAddress: z.string().optional(),
+    permenentAddress: z.string().optional(),
+    guardian: parentValidationSchema.optional(),
+    localGuardian: parentValidationSchema.optional(),
+    academicDepertMent: z.string().optional()
+});

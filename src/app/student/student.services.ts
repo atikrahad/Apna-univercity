@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import studentModel from "./student.Model"
 
 const getAllstudent = async (searchTarm: string) => {
@@ -10,6 +11,12 @@ const getAllstudent = async (searchTarm: string) => {
     }
 }
 
+const updateStudent = async (id: string, updateData: any) => {
+    const result = await studentModel.findByIdAndUpdate(id, updateData)
+    return result
+}
+
 export const studentServices = {
-    getAllstudent
+    getAllstudent,
+    updateStudent
 }

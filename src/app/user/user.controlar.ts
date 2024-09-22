@@ -1,28 +1,27 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { RequestHandler } from "express";
 import { userServieces } from "./user.services";
 import { StudentValidation } from "../student/student.validation";
 import sendResponce from "../utils/sendResponce";
 import httpStatus from "http-status";
+import catchAsync from "../middlewere/catchAsync";
 
-const createStudent: RequestHandler = async (req, res, next) => {
-    try {
-        const { password, student } = req.body
-        const studentInputValidate: any = StudentValidation.parse(student)
-        const result = await userServieces.StudentCreateService(password, studentInputValidate)
+const createStudent = catchAsync(async (req, res, next) => {
 
-        sendResponce(res, {
-            stutasCode: httpStatus.OK,
-            seccess: true,
-            message: "successfully create a student",
-            data: result
-        })
+    const { password, student } = req.body
+    const studentInputValidate: any = StudentValidation.parse(student)
+    const result = await userServieces.StudentCreateService(password, studentInputValidate)
 
-    } catch (err) {
-        next(err)
+    sendResponce(res, {
+        stutasCode: httpStatus.OK,
+        seccess: true,
+        message: "successfully create a student",
+        data: result
+    })
 
-    }
-}
+
+})
 
 export const userControlar = {
     createStudent
