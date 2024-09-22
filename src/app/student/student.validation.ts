@@ -20,18 +20,21 @@ const parentValidationSchema = z.object({
 });
 
 export const StudentValidation = z.object({
-    name: nameValidationSchema,
-    gender: z.enum(["male", "famale", "others"], { required_error: "gender is requerd" }),
-    email: z.string(({ required_error: "Email is requerd" })).email(({ message: "invalid email format" })),
-    dateOfBirth: z.string({ message: "Date of Bitrh is required" }),
-    constactNo: z.string(({ required_error: "contact number is requerd" })).max(15),
-    emergencyContactNo: z.string(({ required_error: "contact number is requerd" })).max(15),
-    group: z.enum(["sceince", "arts", "commerce"], { required_error: "group is requerd" }),
-    presentAddress: z.string().optional(),
-    permenentAddress: z.string().optional(),
-    guardian: parentValidationSchema,
-    localGuardian: parentValidationSchema,
-    academicDepertMent: z.string().optional()
+    password: z.string().min(6, { message: "Minimum pass 6 character" }),
+    student: z.object({
+        name: nameValidationSchema,
+        gender: z.enum(["male", "famale", "others"], { required_error: "gender is requerd" }),
+        email: z.string(({ required_error: "Email is requerd" })).email(({ message: "invalid email format" })),
+        dateOfBirth: z.string({ message: "Date of Bitrh is required" }),
+        constactNo: z.string(({ required_error: "contact number is requerd" })).max(15),
+        emergencyContactNo: z.string(({ required_error: "contact number is requerd" })).max(15),
+        group: z.enum(["sceince", "arts", "commerce"], { required_error: "group is requerd" }),
+        presentAddress: z.string().optional(),
+        permenentAddress: z.string().optional(),
+        guardian: parentValidationSchema,
+        localGuardian: parentValidationSchema,
+        academicDepertMent: z.string().optional()
+    })
 });
 
 

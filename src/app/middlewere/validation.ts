@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from "express";
 import catchAsync from "../utils/catchAsync";
+import { AnyZodObject } from "zod";
 
-const vallidate = (name: any) => {
+const vallidate = (name: AnyZodObject) => {
     return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-        name.parse(req.body)
+        await name.parseAsync(req.body)
         next()
     })
 }
