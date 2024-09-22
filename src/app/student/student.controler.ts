@@ -31,7 +31,20 @@ const updateStudent = catchAsync(async (req, res,) => {
     })
 })
 
+const getSingleStudent = catchAsync(async (req, res) => {
+    const id = req.params.id;
+    const result = await studentServices.getAstudent(id)
+
+    sendResponce(res, {
+        stutasCode: 200,
+        seccess: true,
+        message: "Successfully get a student data",
+        data: result
+    })
+})
+
 export const studentControlar = {
     getAllstudent,
-    updateStudent
+    updateStudent,
+    getSingleStudent
 }

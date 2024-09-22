@@ -16,7 +16,13 @@ const updateStudent = async (id: string, updateData: any) => {
     return result
 }
 
+const getAstudent = async (id: string) => {
+    const result = await studentModel.findById(id)
+    return result
+}
+
 export const studentServices = {
     getAllstudent,
-    updateStudent
+    updateStudent,
+    getAstudent
 }
