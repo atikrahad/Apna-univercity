@@ -2,6 +2,7 @@
 import { Router } from "express";
 import { userRoute } from "../user/user.routes";
 import studentRoute from "../student/student.route";
+import academicSemesterRoute from "../academicSemester/academicSemester.route";
 
 const router = Router()
 
@@ -18,6 +19,10 @@ const routerPath: TPath = [
     {
         path: "/student",
         location: studentRoute
+    },
+    {
+        path: "/academicsemester",
+        location: academicSemesterRoute
     }
 ]
 
