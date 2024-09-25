@@ -6,6 +6,12 @@ const createAcademicSemester = async (academicSemester: TAcademicSemester) => {
   return result;
 };
 
+const getAllAcademicSemester = async () => {
+  const result = await academicSemesterModel.find()
+  return result;
+}
+
 export const academicSemesterServices = {
   createAcademicSemester,
+  getAllAcademicSemester
 };

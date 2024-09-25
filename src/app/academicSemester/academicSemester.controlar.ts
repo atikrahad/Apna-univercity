@@ -13,6 +13,17 @@ const createAcademicSemester = catchAsync(async (req, res) => {
   });
 });
 
+const getAllAcademicSemester = catchAsync(async (req, res) => {
+  const result = await academicSemesterServices.getAllAcademicSemester()
+  sendResponce(res, {
+    stutasCode: 200,
+    seccess: true,
+    message: "Successfully get all academicsemester",
+    data: result
+  })
+})
+
 export const academicSemesterControlar = {
   createAcademicSemester,
+  getAllAcademicSemester
 };
