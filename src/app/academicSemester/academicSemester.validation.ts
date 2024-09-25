@@ -1,9 +1,11 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const academicSemesterValidation = z.object({
-    name: z.string({ message: "Semester name should be string" }),
-    year: z.date({ message: "year must Date type" }),
-    code: z.string({ message: "Semester code must string" }),
-    startmonth: z.string(),
-    endMonth: z.string()
-})
+  name: z.enum(["AlfhaTech", "BetaTech", "GamaTech"] as const),
+  year: z.string({ message: 'year must String type' }),
+  code: z.enum(["01", "02", "03"] as const),
+  startMonth: z.enum(["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"] as const),
+  endMonth: z.enum(["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"] as const),
+});

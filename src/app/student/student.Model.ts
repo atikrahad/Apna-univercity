@@ -46,12 +46,12 @@ const studentSchema = new Schema<TStudent>({
     type: Schema.Types.ObjectId,
     required: true,
     unique: true,
-    ref: "user"
+    ref: 'user',
   },
   id: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   name: {
     type: nameSchema,
