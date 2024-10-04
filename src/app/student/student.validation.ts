@@ -33,7 +33,7 @@ export const StudentValidation = z.object({
     permenentAddress: z.string().optional(),
     guardian: parentValidationSchema,
     localGuardian: parentValidationSchema,
-    academicDepertMent: z.string().optional(),
+    academicDepertMent: z.string().optional()
   }),
 });
 

@@ -27,6 +27,7 @@ export type TStudent = {
   permenentAddress: string;
   guardian: TGuardian;
   localGuardian: TGuardian;
+  academicSemester: ObjectId;
   academicDepertMent: string;
   group?: 'sceince' | 'arts' | 'commerce';
   profileImg: string;

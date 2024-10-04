@@ -1,9 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import academicSemesterModel from '../academicSemester/academicSemester.model';
 import { TStudent } from '../student/student.Interface';
 import studentModel from '../student/student.Model';
 import UserModel from './user.model';
+import { generateId } from './user.utils';
 
 const StudentCreateService = async (password: string, student: TStudent) => {
-  const id = 'user11';
+
+  const acadedemicsemester: any = await academicSemesterModel.findById({ _id: student.academicSemester })
+
+
+
+  const id = await generateId(acadedemicsemester);
   const result = await UserModel.create({
     id: id,
     password: password,
@@ -24,6 +32,7 @@ const StudentCreateService = async (password: string, student: TStudent) => {
       localGuardian: student.localGuardian,
       permenentAddress: student.permenentAddress,
       presentAddress: student.presentAddress,
+      academicSemester: student.academicSemester,
       emergencyContactNo: student.emergencyContactNo,
       academicDepertMent: student.academicDepertMent,
       profileImg: student.profileImg,

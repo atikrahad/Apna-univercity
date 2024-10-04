@@ -9,8 +9,8 @@ import catchAsync from '../utils/catchAsync';
 
 const createStudent = catchAsync(async (req, res, next) => {
   const { password, student } = req.body;
-  const studentInputValidate: any = StudentValidation.parse(student);
-  const result = await userServieces.StudentCreateService(password, studentInputValidate);
+
+  const result = await userServieces.StudentCreateService(password, student);
 
   sendResponce(res, {
     stutasCode: httpStatus.OK,
