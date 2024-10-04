@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { userServieces } from './user.services';
-import { StudentValidation } from '../student/student.validation';
 import sendResponce from '../utils/sendResponce';
 import httpStatus from 'http-status';
 import catchAsync from '../utils/catchAsync';

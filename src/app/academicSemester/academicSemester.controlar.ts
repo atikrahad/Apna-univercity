@@ -23,7 +23,18 @@ const getAllAcademicSemester = catchAsync(async (req, res) => {
   })
 })
 
+const getAvailableSemester = catchAsync(async (req, res) => {
+  const result = await academicSemesterServices.getAvailableSemester()
+  sendResponce(res, {
+    stutasCode: 200,
+    seccess: true,
+    message: "Get available semester",
+    data: result
+  })
+})
+
 export const academicSemesterControlar = {
   createAcademicSemester,
-  getAllAcademicSemester
+  getAllAcademicSemester,
+  getAvailableSemester
 };

@@ -7,5 +7,6 @@ const academicSemesterRoute = Router();
 
 academicSemesterRoute.post('/', vallidate(academicSemesterValidation), academicSemesterControlar.createAcademicSemester);
 academicSemesterRoute.get("/", academicSemesterControlar.getAllAcademicSemester)
+academicSemesterRoute.get("/available", academicSemesterControlar.getAvailableSemester)
 
 export default academicSemesterRoute;

@@ -22,7 +22,16 @@ const getAllAcademicSemester = async () => {
   return result;
 }
 
+const getAvailableSemester = async () => {
+  const thisYear = new Date().getFullYear().toString().slice(0, 4)
+  const result = await academicSemesterModel.find({
+    year: { $gte: thisYear }
+  })
+  return result
+}
+
 export const academicSemesterServices = {
   createAcademicSemester,
-  getAllAcademicSemester
+  getAllAcademicSemester,
+  getAvailableSemester
 };
